@@ -1,0 +1,54 @@
+{{ define "main" }}
+<div class="page-wrapper">
+    <div class="background-layer"></div>
+
+    <audio id="ambient-audio" loop>
+        <source src="/audio/typewriter-typing-68696.mp3" type="audio/mpeg">
+    </audio>
+
+    <main class="content">
+        <header class="title-block">
+            <img src="/img/title_and_credits.png" alt="The Typist - Whose Story Is It? A World Premiere by Shem Bitterman, Directed by Jeremy Wechsler, Featuring Noah James and Evangeline Edwards" class="title-image">
+        </header>
+
+        <div class="figures-container">
+            <img src="/img/figures.png" alt="A woman at a typewriter with a figure made of letters" class="figures-image">
+        </div>
+
+        <footer class="show-info">
+            <div class="dates">{{ .Site.Params.dates }}</div>
+            <div class="venue">{{ .Site.Params.venue }}</div>
+            <div class="address">{{ .Site.Params.address }}</div>
+            <a href="{{ .Site.Params.ticketUrl }}" class="ticket-button">Get Tickets</a>
+        </footer>
+    </main>
+
+    <button id="audio-toggle" class="audio-toggle" aria-label="Toggle sound">
+        <span class="audio-icon audio-off">&#9834;</span>
+    </button>
+</div>
+
+<script>
+(function() {
+    const audio = document.getElementById('ambient-audio');
+    const toggle = document.getElementById('audio-toggle');
+    const icon = toggle.querySelector('.audio-icon');
+
+    audio.volume = 0.3;
+    let isPlaying = false;
+
+    toggle.addEventListener('click', function() {
+        if (isPlaying) {
+            audio.pause();
+            icon.classList.remove('audio-on');
+            icon.classList.add('audio-off');
+        } else {
+            audio.play();
+            icon.classList.remove('audio-off');
+            icon.classList.add('audio-on');
+        }
+        isPlaying = !isPlaying;
+    });
+})();
+</script>
+{{ end }}

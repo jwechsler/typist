@@ -1,0 +1,14 @@
+baseURL = '/'
+languageCode = 'en-us'
+title = 'The Typist - A World Premiere Play'
+
+[params]
+  description = "The World Premiere of a new play by Shem Bitterman, directed by Jeremy Wechsler"
+  playwright = "Shem Bitterman"
+  director = "Jeremy Wechsler"
+  cast = "Noah James & Evangeline Edwards"
+  producers = "Plays With People and Danna Hyams Productions"
+  dates = "January 27 - March 9"
+  venue = "The Hudson Guild Theatre"
+  address = "6539 Santa Monica Blvd. LA 90038"
+  ticketUrl = "https://playswithpeople.ludus.com/index.php?sections=events"
