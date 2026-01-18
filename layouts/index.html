@@ -11,6 +11,27 @@
             <img src="/img/title_and_credits.png" alt="The Typist - Whose Story Is It? A World Premiere by Shem Bitterman, Directed by Jeremy Wechsler, Featuring Noah James and Evangeline Edwards" class="title-image">
         </header>
 
+        <nav class="tab-control">
+            <button class="tab active" data-tab="about">About The Typist</button>
+            <button class="tab" data-tab="cast">Cast/Crew</button>
+            <button class="tab" data-tab="video">Video</button>
+        </nav>
+
+        <div class="tab-content">
+            <div class="tab-panel active" id="panel-about">
+                <p>A jazz-infused love story, THE TYPIST transports us to the Summer of '61 in a Greenwich Village basement apartment where a bourbon-soaked novelist racing to complete his manuscript for publishing hires a typist to commit his words to the page. What begins as a professional arrangement—dictation, typing, coffee, repeat—becomes something more combustible.</p>
+            </div>
+            <div class="tab-panel" id="panel-cast">
+                <p>The world premiere of multiple award-winning playwright Shem Bitterman's "The Typist" stars Noah James ("The Chosen") and Evangeline Edwards ("Heroes of the Fourth Turning"), directed by Jeremy Wechsler (Artistic Director of Chicago's Theater Wit). Danna Hyams ("The Civil Twilight") produces with MK Viakley ("Distant Tales"), with production design by Joel Daavid ("Adolescent Salvation") and live music directed and composed by Emmy nominated Roger Bellon.</p>
+            </div>
+            <div class="tab-panel" id="panel-video">
+                <video id="synopsis-video" controls width="100%">
+                    <source src="/video/NoahEvangleine-synopsis.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+        </div>
+
         <div class="figures-container">
             <img src="/img/figures.png" alt="A woman at a typewriter with a figure made of letters" class="figures-image">
         </div>
@@ -30,6 +51,7 @@
 
 <script>
 (function() {
+    // Audio toggle
     const audio = document.getElementById('ambient-audio');
     const toggle = document.getElementById('audio-toggle');
     const icon = toggle.querySelector('.audio-icon');
@@ -49,6 +71,43 @@
         }
         isPlaying = !isPlaying;
     });
+
+    // Tab control
+    const tabs = document.querySelectorAll('.tab');
+    const panels = document.querySelectorAll('.tab-panel');
+
+    tabs.forEach(function(tab) {
+        tab.addEventListener('click', function() {
+            const targetId = 'panel-' + this.dataset.tab;
+
+            tabs.forEach(function(t) { t.classList.remove('active'); });
+            panels.forEach(function(p) { p.classList.remove('active'); });
+
+            this.classList.add('active');
+            document.getElementById(targetId).classList.add('active');
+        });
+    });
+
+    // Video fullscreen on click
+    const video = document.getElementById('synopsis-video');
+    if (video) {
+        video.addEventListener('click', function(e) {
+            if (!video.classList.contains('video-expanded')) {
+                e.preventDefault();
+                video.classList.add('video-expanded');
+            }
+        });
+
+        video.addEventListener('dblclick', function() {
+            video.classList.remove('video-expanded');
+        });
+
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && video.classList.contains('video-expanded')) {
+                video.classList.remove('video-expanded');
+            }
+        });
+    }
 })();
 </script>
 {{ end }}

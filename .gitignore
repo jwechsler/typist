@@ -8,3 +8,6 @@ resources/_gen/
 
 # Backup files
 *_backup.*
+
+# Original video files (keep converted mp4)
+*.mov

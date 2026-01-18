@@ -45,7 +45,7 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: space-between;
+    justify-content: flex-start;
     padding: 1rem 1rem 0;
     min-height: 100vh;
     position: relative;
@@ -148,6 +148,96 @@ body {
     box-shadow: 5px 5px 0px rgba(0, 0, 0, 0.3);
 }
 
+/* Tab Control */
+.tab-control {
+    display: flex;
+    justify-content: flex-end;
+    gap: 0;
+    position: relative;
+    z-index: 10;
+    width: 100%;
+    max-width: 500px;
+    align-self: flex-end;
+    margin-right: 2rem;
+    margin-top: 1rem;
+}
+
+.tab {
+    background-color: rgba(26, 74, 90, 0.85);
+    border: 1px solid rgba(245, 240, 230, 0.4);
+    border-bottom: none;
+    color: #f5f0e6;
+    padding: 0.6rem 1.2rem;
+    font-family: 'Special Elite', monospace;
+    font-size: 0.85rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.tab:first-child {
+    border-radius: 4px 0 0 0;
+}
+
+.tab:last-child {
+    border-radius: 0 4px 0 0;
+}
+
+.tab:hover {
+    background-color: rgba(26, 74, 90, 0.95);
+}
+
+.tab.active {
+    background-color: rgba(245, 240, 230, 0.9);
+    color: #1a4a5a;
+}
+
+/* Tab Content */
+.tab-content {
+    display: block;
+    position: relative;
+    z-index: 10;
+    width: 100%;
+    max-width: 500px;
+    align-self: flex-end;
+    margin-right: 2rem;
+    background-color: rgba(245, 240, 230, 0.9);
+    border-radius: 4px 0 4px 4px;
+    padding: 1.5rem;
+    color: #1a4a5a;
+    font-family: 'Special Elite', monospace;
+    font-size: 0.9rem;
+    line-height: 1.8;
+    max-height: 40vh;
+    overflow-y: auto;
+}
+
+.tab-panel {
+    display: none;
+}
+
+.tab-panel.active {
+    display: block;
+}
+
+/* Video expand to fullscreen */
+.video-expanded {
+    position: fixed !important;
+    top: 50% !important;
+    left: 50% !important;
+    transform: translate(-50%, -50%) !important;
+    width: 90vw !important;
+    max-width: 1200px !important;
+    height: auto !important;
+    z-index: 1000 !important;
+    cursor: zoom-out;
+}
+
+#panel-video video {
+    cursor: zoom-in;
+}
+
 /* Audio Toggle Button */
 .audio-toggle {
     position: fixed;
@@ -187,6 +277,25 @@ body {
 }
 
 /* Responsive Design */
+
+/* Short viewport - hide secondary content when footer would overlap */
+@media (max-height: 800px) {
+    .hide-on-short {
+        display: none !important;
+    }
+
+    .tab-content {
+        max-height: 25vh !important;
+        overflow-y: auto;
+    }
+}
+
+@media (max-height: 600px) {
+    .tab-control,
+    .tab-content {
+        display: none !important;
+    }
+}
 
 /* Tablet */
 @media (max-width: 768px) {
@@ -228,6 +337,12 @@ body {
     .title-image {
         /* Ensure title/credits always visible on mobile */
         min-width: 280px;
+    }
+
+    /* Hide tabs on mobile */
+    .tab-control,
+    .tab-content {
+        display: none !important;
     }
 
     /* Figures move to foreground on mobile */
