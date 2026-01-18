@@ -3,12 +3,12 @@
     <div class="background-layer"></div>
 
     <audio id="ambient-audio" loop>
-        <source src="/audio/typewriter-typing-68696.mp3" type="audio/mpeg">
+        <source src="{{ "audio/typewriter-typing-68696.mp3" | relURL }}" type="audio/mpeg">
     </audio>
 
     <main class="content">
         <header class="title-block">
-            <img src="/img/title_and_credits.png" alt="The Typist - Whose Story Is It? A World Premiere by Shem Bitterman, Directed by Jeremy Wechsler, Featuring Noah James and Evangeline Edwards" class="title-image">
+            <img src="{{ "img/title_and_credits.png" | relURL }}" alt="The Typist - Whose Story Is It? A World Premiere by Shem Bitterman, Directed by Jeremy Wechsler, Featuring Noah James and Evangeline Edwards" class="title-image">
         </header>
 
         <nav class="tab-control">
@@ -26,14 +26,14 @@
             </div>
             <div class="tab-panel" id="panel-video">
                 <video id="synopsis-video" controls width="100%">
-                    <source src="/video/NoahEvangleine-synopsis.mp4" type="video/mp4">
+                    <source src="{{ "video/NoahEvangleine-synopsis.mp4" | relURL }}" type="video/mp4">
                     Your browser does not support the video tag.
                 </video>
             </div>
         </div>
 
         <div class="figures-container">
-            <img src="/img/figures.png" alt="A woman at a typewriter with a figure made of letters" class="figures-image">
+            <img src="{{ "img/figures.png" | relURL }}" alt="A woman at a typewriter with a figure made of letters" class="figures-image">
         </div>
 
         <footer class="show-info">
