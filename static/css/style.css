@@ -377,6 +377,12 @@ body {
         gap: 0;
     }
 
+    .title-row {
+        flex-direction: column;
+        align-items: center;
+        gap: 0.5rem;
+    }
+
     .title-block {
         max-width: 100%;
         margin: 0;
@@ -386,6 +392,31 @@ body {
     .title-image {
         /* Ensure title/credits always visible on mobile */
         min-width: 280px;
+    }
+
+    .headshots {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 0.5rem;
+        margin-top: 0;
+    }
+
+    .headshots-label {
+        width: 100%;
+        text-align: center;
+    }
+
+    .headshot {
+        height: 80px;
+    }
+
+    .headshot-name {
+        font-size: 0.7rem;
+    }
+
+    .headshots-label {
+        font-size: 0.7rem;
     }
 
     /* Hide tabs on mobile */
