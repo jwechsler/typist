@@ -7,9 +7,23 @@
     </audio>
 
     <main class="content">
-        <header class="title-block">
-            <img src="{{ "img/title_and_credits.png" | relURL }}" alt="The Typist - Whose Story Is It? A World Premiere by Shem Bitterman, Directed by Jeremy Wechsler, Featuring Noah James and Evangeline Edwards" class="title-image">
-        </header>
+        <div class="title-row">
+            <header class="title-block">
+                <img src="{{ "img/title_and_credits_no_featuring.png" | relURL }}" alt="The Typist - Whose Story Is It? A World Premiere by Shem Bitterman, Directed by Jeremy Wechsler" class="title-image">
+            </header>
+
+            <div class="headshots">
+                <span class="headshots-label">Featuring</span>
+                <div class="headshot-item">
+                    <img src="{{ "img/simon_with_ink.png" | relURL }}" alt="Noah James" class="headshot">
+                    <span class="headshot-name">Noah James</span>
+                </div>
+                <div class="headshot-item">
+                    <img src="{{ "img/edwards_with_ink.png" | relURL }}" alt="Evangeline Edwards" class="headshot">
+                    <span class="headshot-name">Evangeline Edwards</span>
+                </div>
+            </div>
+        </div>
 
         <nav class="tab-control">
             <button class="tab active" data-tab="about">About The Typist</button>

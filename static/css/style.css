@@ -51,9 +51,18 @@ body {
     position: relative;
 }
 
+/* Title Row - Title and Headshots side by side */
+.title-row {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 1rem;
+    position: relative;
+    z-index: 10;
+}
+
 /* Title Block - Always Visible, on top */
 .title-block {
-    width: 100%;
     max-width: 600px;
     text-align: center;
     flex-shrink: 0;
@@ -65,6 +74,46 @@ body {
     width: 100%;
     height: auto;
     max-width: 100%;
+}
+
+/* Headshots */
+.headshots {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    position: relative;
+    z-index: 10;
+}
+
+.headshots-label {
+    color: #f5f0e6;
+    font-size: 0.9rem;
+    font-weight: bold;
+    text-align: center;
+    text-transform: uppercase;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+}
+
+.headshot-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.headshot {
+    width: auto;
+    height: 150px;
+    object-fit: contain;
+}
+
+.headshot-name {
+    color: #f5f0e6;
+    font-size: 0.9rem;
+    font-weight: bold;
+    text-align: center;
+    text-transform: uppercase;
+    margin-top: 0.25rem;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
 }
 
 /* Figures Container - Full width, behind other content */
