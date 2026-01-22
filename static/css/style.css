@@ -370,7 +370,7 @@ body {
 }
 
 /* Mobile */
-@media (max-width: 480px) {
+@media (max-width: 768px) {
     .content {
         padding: 0;
         justify-content: flex-start;
