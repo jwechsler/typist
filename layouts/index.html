@@ -44,7 +44,22 @@
                 <p>The world premiere of multiple award-winning playwright Shem Bitterman's "The Typist" stars Noah James ("The Chosen") and Evangeline Edwards ("Heroes of the Fourth Turning"), directed by Jeremy Wechsler (Artistic Director of Chicago's Theater Wit). Danna Hyams ("The Civil Twilight") produces with MK Viakley ("Distant Tales"), with production design by Joel Daavid ("Adolescent Salvation") and live music directed and composed by Emmy nominated Roger Bellon.</p>
             </div>
             <div class="tab-panel" id="panel-video">
-                <video id="synopsis-video" controls width="100%">
+                <div class="video-thumbnail" id="video-thumbnail">
+                    <video id="thumbnail-preview" muted preload="metadata">
+                        <source src="{{ "video/NoahEvangleine-synopsis.mp4" | relURL }}#t=3" type="video/mp4">
+                    </video>
+                    <div class="play-button-overlay">
+                        <span class="play-icon">▶</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Video Modal -->
+        <div class="video-modal-overlay" id="video-modal">
+            <div class="video-modal-content">
+                <button class="video-close-btn" id="video-close">×</button>
+                <video id="synopsis-video" controls>
                     <source src="{{ "video/NoahEvangleine-synopsis.mp4" | relURL }}" type="video/mp4">
                     Your browser does not support the video tag.
                 </video>
@@ -107,26 +122,44 @@
         });
     });
 
-    // Video fullscreen on click
+    // Video modal controls
+    const videoModal = document.getElementById('video-modal');
     const video = document.getElementById('synopsis-video');
-    if (video) {
-        video.addEventListener('click', function(e) {
-            if (!video.classList.contains('video-expanded')) {
-                e.preventDefault();
-                video.classList.add('video-expanded');
-            }
-        });
+    const thumbnail = document.getElementById('video-thumbnail');
+    const closeBtn = document.getElementById('video-close');
 
-        video.addEventListener('dblclick', function() {
-            video.classList.remove('video-expanded');
-        });
+    function openVideoModal() {
+        videoModal.classList.add('active');
+        video.play();
+    }
 
-        document.addEventListener('keydown', function(e) {
-            if (e.key === 'Escape' && video.classList.contains('video-expanded')) {
-                video.classList.remove('video-expanded');
+    function closeVideoModal() {
+        videoModal.classList.remove('active');
+        video.pause();
+        video.currentTime = 0;
+    }
+
+    if (thumbnail) {
+        thumbnail.addEventListener('click', openVideoModal);
+    }
+
+    if (closeBtn) {
+        closeBtn.addEventListener('click', closeVideoModal);
+    }
+
+    if (videoModal) {
+        videoModal.addEventListener('click', function(e) {
+            if (e.target === videoModal) {
+                closeVideoModal();
             }
         });
     }
+
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && videoModal && videoModal.classList.contains('active')) {
+            closeVideoModal();
+        }
+    });
 
     // Rotating quotes
     var quotes = [
