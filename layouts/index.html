@@ -7,6 +7,11 @@
     </audio>
 
     <main class="content">
+        <div class="quotes-banner">
+            <div class="quote-text">"<b>Edgy and entertaining</b>, with <b>sharp writing</b> and vivid characters."</div>
+            <div class="quote-source">— StageSceneLA</div>
+        </div>
+
         <div class="title-row">
             <header class="title-block">
                 <img src="{{ "img/title_and_credits_no_featuring.png" | relURL }}" alt="The Typist - Whose Story Is It? A World Premiere by Shem Bitterman, Directed by Jeremy Wechsler" class="title-image">
@@ -122,6 +127,42 @@
             }
         });
     }
+
+    // Rotating quotes
+    var quotes = [
+        { text: "<b>Edgy and entertaining</b>, with <b>sharp writing</b> and vivid characters.", source: "StageSceneLA" },
+        { text: "Bitterman's latest is a <b>Doozy of a play</b>!", source: "StageSceneLA" },
+        { text: "James, an acting dynamo, brings <b>dramatic intensity</b> and passion.", source: "StageSceneLA" },
+        { text: "Edwards <b>stuns</b> with commanding stage presence, <b>chameleon-like versatility</b>, and acting chops.", source: "StageSceneLA" },
+        { text: "Wechsler brings a <b>brilliant understanding of human nature</b>.", source: "Broadway World" },
+        { text: "<b>Fast-paced</b> and delivered with <b>emotional skill</b>.", source: "Broadway World" },
+        { text: "<b>Combustible!</b>", source: "Broadway World" }
+    ];
+    var quoteIndex = Math.floor(Math.random() * quotes.length);
+    var quoteText = document.querySelector('.quote-text');
+    var quoteSource = document.querySelector('.quote-source');
+
+    // Set initial random quote
+    quoteText.innerHTML = '"' + quotes[quoteIndex].text + '"';
+    quoteSource.textContent = '— ' + quotes[quoteIndex].source;
+
+    function rotateQuote() {
+        quoteText.classList.add('quote-fade-out');
+        quoteSource.classList.add('quote-fade-out');
+        setTimeout(function() {
+            var newIndex;
+            do {
+                newIndex = Math.floor(Math.random() * quotes.length);
+            } while (newIndex === quoteIndex && quotes.length > 1);
+            quoteIndex = newIndex;
+            quoteText.innerHTML = '"' + quotes[quoteIndex].text + '"';
+            quoteSource.textContent = '— ' + quotes[quoteIndex].source;
+            quoteText.classList.remove('quote-fade-out');
+            quoteSource.classList.remove('quote-fade-out');
+        }, 500);
+    }
+
+    setInterval(rotateQuote, 8000);
 })();
 </script>
 {{ end }}
