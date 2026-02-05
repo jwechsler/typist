@@ -525,7 +525,7 @@ body {
 /* Mobile */
 @media (max-width: 768px) {
     .quotes-banner {
-        padding: 0.75rem 1rem;
+        padding: 1.25rem 1rem 0.75rem;
     }
 
     .quote-text {
