@@ -492,7 +492,8 @@ body {
     }
 }
 
-@media (max-height: 600px) {
+@media (max-height: 600px) and (min-width: 769px) {
+    /* Only hide tabs on short desktop screens, not mobile */
     .tab-control,
     .tab-content {
         display: none !important;
@@ -584,17 +585,48 @@ body {
         font-size: 0.7rem;
     }
 
-    /* Hide tabs on mobile */
-    .tab-control,
-    .tab-content {
-        display: none !important;
+    /* Reorder content for mobile: tabs appear after footer */
+    .tab-control {
+        order: 10;
+        position: relative;
+        justify-content: center;
+        margin-top: 1.5rem;
+        width: 100%;
+        padding: 0;
     }
 
-    /* Figures move to foreground on mobile */
+    .tab {
+        font-size: 0.8rem;
+        padding: 0.5rem 0.75rem;
+    }
+
+    .tab-content {
+        order: 11;
+        position: relative;
+        width: 100%;
+        max-width: 100%;
+        max-height: none !important;
+        height: auto !important;
+        overflow: visible !important;
+        margin: 0 0 2rem;
+        border-radius: 0;
+        align-self: stretch;
+    }
+
+    .tab-panel {
+        padding: 1rem;
+    }
+
+    .tab-panel p {
+        font-size: 0.9rem;
+        line-height: 1.5;
+    }
+
+    /* Figures flow naturally on mobile */
     .figures-container {
+        order: 5;
         position: relative;
         height: auto;
-        z-index: 5;
         display: block;
         padding: 0;
         margin: 0;
@@ -609,8 +641,11 @@ body {
     }
 
     .show-info {
+        order: 6;
+        position: relative;
+        bottom: auto;
         padding: 1rem 0.5rem;
-        background: linear-gradient(to top, rgba(0, 60, 70, 0.95) 0%, rgba(0, 60, 70, 0.8) 70%, transparent 100%);
+        background: rgba(0, 60, 70, 0.95);
     }
 
     .dates {
